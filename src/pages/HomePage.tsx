@@ -1,4 +1,6 @@
 import { Box, Grid, Show, GridItem, Flex } from "@chakra-ui/react";
+import GenreList from "../components/GenreList";
+import MovieGrid from "../components/MovieGrid";
 
 const HomePage = () => {
   return (
@@ -13,13 +15,13 @@ const HomePage = () => {
       }}
     >
       <Show above="lg">
-        <GridItem area="aside">
-          Sidebar
+        <GridItem area="aside" paddingX={5}>
+          <GenreList />
         </GridItem>
       </Show>
 
       <GridItem area="main">
-        Main
+        <MovieGrid />
       </GridItem>
     </Grid>
   );

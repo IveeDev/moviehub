@@ -2,14 +2,13 @@ import axios, { AxiosRequestConfig } from "axios";
 
 export interface FetchResponse<T> {
   page: number;
-  //   next: string | null;
   results: T[];
 }
 
 const axiosInstance = axios.create({
   baseURL: "https://api.themoviedb.org/3",
   params: {
-    key: "b18ec24c64c17e2fe379f7f64e72e08c",
+    api_key: "b18ec24c64c17e2fe379f7f64e72e08c",
   },
 });
 
@@ -20,6 +19,12 @@ class APIClient<T> {
     this.endPoint = endPoint;
   }
 
+  // To get a list of genres
+  getAny = (config?: AxiosRequestConfig) => {
+    return axiosInstance
+      .get<any[]>(this.endPoint, config)
+      .then((res) => res.data);
+  };
   // To get all games, posts etc
   getAll = (config: AxiosRequestConfig) => {
     // We did this because of the query parameter when fetching the games. It is optional
