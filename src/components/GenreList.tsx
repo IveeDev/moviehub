@@ -8,9 +8,11 @@ import {
   ListItem,
   Spinner,
 } from "@chakra-ui/react";
+import useGameQueryStore from "../store";
 
 const GenreList = () => {
   const { data, isLoading, error } = useGenres();
+  const setSelectedGenreId = useGameQueryStore((s) => s.setGenreId);
 
   if (error) return null;
   if (isLoading) return <Spinner />;
@@ -24,7 +26,12 @@ const GenreList = () => {
         {data?.results.map((genre) => (
           <ListItem key={genre.id} paddingY="5px">
             <HStack>
-              <Button whiteSpace="normal" fontSize="md" variant="link">
+              <Button
+                whiteSpace="normal"
+                fontSize="md"
+                variant="link"
+                onClick={() => setSelectedGenreId(genre.id)}
+              >
                 {genre.name}
               </Button>
             </HStack>

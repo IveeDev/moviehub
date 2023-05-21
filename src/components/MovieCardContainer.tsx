@@ -7,7 +7,14 @@ interface Props {
 
 const MovieCardContainer = ({ children }: Props) => {
   return (
-    <Box borderRadius={10} overflow="hidden">
+    <Box
+      borderRadius={10}
+      overflow="hidden"
+      _hover={{
+        transform: "scale(1.06)",
+        transition: "transform .15 ease-in",
+      }}
+    >
       {children}
     </Box>
   );

@@ -2,9 +2,10 @@ import useMovies from "../hooks/useMovies";
 import { SimpleGrid, Spinner, Text } from "@chakra-ui/react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import MovieCard from "./MovieCard";
-// import MovieCardSkeleton from "./MovieCardSkeleton";
-// import MovieCardContainer from "./MovieCardContainer";
+
 import React from "react";
+import MovieCardContainer from "./MovieCardContainer";
+import MovieCardSkeleton from "./MovieCardSkeleton";
 
 const MovieGrid = () => {
   const {
@@ -15,12 +16,9 @@ const MovieGrid = () => {
     isFetchingNextPage,
     hasNextPage,
   } = useMovies();
-  // const skeletons = [1, 2, 3, 4, 5, 6, 7, 8];
+  const skeletons = [1, 2, 3, 4, 5, 6, 7, 8];
   const fetchedGamesCount =
     data?.pages.reduce((total, page) => total + page.results.length, 0) || 0;
-
-  // if (error) return null;
-  // if (isLoading) return <Spinner />;
 
   return (
     <>
@@ -36,10 +34,18 @@ const MovieGrid = () => {
           padding="10px"
           spacing={6}
         >
+          {isLoading &&
+            skeletons.map((skeleton) => (
+              <MovieCardContainer key={skeleton}>
+                <MovieCardSkeleton />
+              </MovieCardContainer>
+            ))}
           {data?.pages.map((page, index) => (
             <React.Fragment key={index}>
               {page.results.map((movie) => (
-                <MovieCard movie={movie} />
+                <MovieCardContainer key={movie.id}>
+                  <MovieCard movie={movie} />
+                </MovieCardContainer>
               ))}
             </React.Fragment>
           ))}
