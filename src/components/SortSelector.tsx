@@ -29,11 +29,6 @@ const sortOrders = [
   },
 
   {
-    value: "popularty.asc",
-    label: "Popularity Ascending",
-  },
-
-  {
     value: "vote_average.asc",
     label: "Vote Average Ascending",
   },
@@ -49,8 +44,18 @@ const sortOrders = [
   },
 
   {
-    value: "vote_count.asc",
+    value: "vote_count.desc",
     label: "Vote Count Descending",
+  },
+
+  {
+    value: "primary_release_date.asc",
+    label: "Primary Release Ascending",
+  },
+
+  {
+    value: "primary_release_date.desc",
+    label: "Primary Release Descending",
   },
 ];
 

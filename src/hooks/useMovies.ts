@@ -10,7 +10,7 @@ const useMovies = () => {
   const movieQuery = useMovieQueryStore((s) => s.movieQuery);
 
   return useInfiniteQuery<FetchResponse<Movie>, Error>({
-    queryKey: ["movie", movieQuery],
+    queryKey: ["movies", movieQuery],
     queryFn: ({ pageParam = 1 }) =>
       apiClient.getAll({
         params: {

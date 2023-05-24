@@ -1,8 +1,14 @@
 import axios, { AxiosRequestConfig } from "axios";
+import { CastMember } from "../entity/CastMember";
 
 export interface FetchResponse<T> {
   page: number;
   results: T[];
+}
+
+export interface MovieCastCrewResponse {
+  cast: CastMember[];
+  // Other properties if available
 }
 
 const axiosInstance = axios.create({
@@ -39,10 +45,17 @@ class APIClient<T> {
       .then((res) => res.data);
   };
 
-  // Get a single game or post etc
-  get = (id: number | string) => {
+  // Get a single movie or post etc
+  get = (id: string | number, extension: string = "") => {
     return axiosInstance
-      .get<T>(this.endPoint + "/" + id)
+      .get<T>(this.endPoint + "/" + id + extension)
+      .then((res) => res.data);
+  };
+
+  // Get a single movie with cast and crew etc
+  getSimilarMovies = (id: string | number, extension: string = "") => {
+    return axiosInstance
+      .get<FetchResponse<T>>(this.endPoint + "/" + id + extension)
       .then((res) => res.data);
   };
 }
