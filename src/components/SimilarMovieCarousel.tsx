@@ -50,6 +50,7 @@ const SimilarMovieCarousel = () => {
 
   if (error) return null;
   if (isLoading) return <Spinner />;
+  if (data?.results.length === 0) return <Text>No Result</Text>;
 
   return (
     <Slider {...sliderSettings}>
