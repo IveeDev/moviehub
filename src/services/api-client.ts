@@ -25,6 +25,12 @@ class APIClient<T> {
     this.endPoint = endPoint;
   }
 
+  // To get a list of genres
+  getAny = (config?: AxiosRequestConfig) => {
+    return axiosInstance
+      .get<any[]>(this.endPoint, config)
+      .then((res) => res.data);
+  };
   // To get all games, posts etc
   getAll = (config: AxiosRequestConfig) => {
     // We did this because of the query parameter when fetching the games. It is optional

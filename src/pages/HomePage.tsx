@@ -1,10 +1,8 @@
-import { Box, Grid, Show, GridItem, Flex, Text } from "@chakra-ui/react";
+import { Box, Grid, Show, GridItem, Flex } from "@chakra-ui/react";
 import GenreList from "../components/GenreList";
 import MovieGrid from "../components/MovieGrid";
 import MovieListSelector from "../components/MovieListSelector";
 import SortSelector from "../components/SortSelector";
-import useMovies from "../hooks/useMovies";
-import MovieHeading from "../components/MovieHeading";
 
 const HomePage = () => {
   return (
@@ -25,7 +23,6 @@ const HomePage = () => {
       </Show>
 
       <GridItem area="main">
-        <MovieHeading />
         <Flex marginLeft={2}>
           <MovieListSelector />
           <Box marginLeft={3}>

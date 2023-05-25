@@ -9,7 +9,7 @@ import {
   Card,
   CardBody,
 } from "@chakra-ui/react";
-import { format, isValid } from "date-fns";
+import { format } from "date-fns";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -59,13 +59,9 @@ const SimilarMovieCarousel = () => {
           <Box marginX={3}>
             <MovieCard movie={similarMovie} />
             <Flex marginY={3}>
-              {isValid(new Date(similarMovie.release_date)) ? (
-                <Text>
-                  {format(new Date(similarMovie.release_date), "MMM d, yyyy")}
-                </Text>
-              ) : (
-                <Text>Unknown Release Date</Text>
-              )}
+              <Text>
+                {format(new Date(similarMovie.release_date), "MMM d, yyyy")}
+              </Text>
             </Flex>
           </Box>
         </MovieCardContainer>
