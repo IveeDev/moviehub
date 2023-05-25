@@ -1,5 +1,5 @@
 import useMovies from "../hooks/useMovies";
-import { SimpleGrid, Spinner, Text } from "@chakra-ui/react";
+import { Box, SimpleGrid, Spinner, Text } from "@chakra-ui/react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import MovieCard from "./MovieCard";
 
@@ -17,14 +17,20 @@ const MovieGrid = () => {
     hasNextPage,
   } = useMovies();
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8];
-  const fetchedGamesCount =
+  const fetchedMoviesCount =
     data?.pages.reduce((total, page) => total + page.results.length, 0) || 0;
+  const isSearchCompleted = data?.pages.length === fetchedMoviesCount;
+  const isEmpty = fetchedMoviesCount === 0;
 
   return (
     <>
       {error && <Text>{error.message}</Text>}
+      <Box marginX={3} marginY={3}>
+        {!isLoading && isEmpty && <Text fontFamily="2xl">No result found</Text>}
+      </Box>
+
       <InfiniteScroll
-        dataLength={fetchedGamesCount}
+        dataLength={fetchedMoviesCount}
         hasMore={!!hasNextPage} // double exclamation convert undefined to boolean value
         next={() => fetchNextPage()}
         loader={<Spinner />}
