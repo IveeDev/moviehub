@@ -17,14 +17,18 @@ const MovieGrid = () => {
     hasNextPage,
   } = useMovies();
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8];
-  const fetchedGamesCount =
+  const fetchedMoviesCount =
     data?.pages.reduce((total, page) => total + page.results.length, 0) || 0;
+  const isSearchCompleted = data?.pages.length === fetchedMoviesCount;
+  const isEmpty = fetchedMoviesCount === 0;
 
   return (
     <>
       {error && <Text>{error.message}</Text>}
+      {!isLoading && isEmpty && <Text>No result found</Text>}
+
       <InfiniteScroll
-        dataLength={fetchedGamesCount}
+        dataLength={fetchedMoviesCount}
         hasMore={!!hasNextPage} // double exclamation convert undefined to boolean value
         next={() => fetchNextPage()}
         loader={<Spinner />}
