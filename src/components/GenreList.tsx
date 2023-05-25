@@ -9,10 +9,12 @@ import {
   Spinner,
 } from "@chakra-ui/react";
 import useGameQueryStore from "../store";
+import useMovieQueryStore from "../store";
 
 const GenreList = () => {
   const { data, isLoading, error } = useGenres();
-  const setSelectedGenreId = useGameQueryStore((s) => s.setGenreId);
+  const setSelectedGenreId = useMovieQueryStore((s) => s.setGenreId);
+  const getSelectedGenreId = useMovieQueryStore((s) => s.movieQuery.genreId);
 
   if (error) return null;
   if (isLoading) return <Spinner />;
@@ -29,6 +31,8 @@ const GenreList = () => {
               <Button
                 whiteSpace="normal"
                 fontSize="md"
+                color={genre.id === getSelectedGenreId ? "blue.500" : "normal"}
+                fontWeight={genre.id === getSelectedGenreId ? "bold" : "normal"}
                 variant="link"
                 onClick={() => setSelectedGenreId(genre.id)}
               >
