@@ -1,11 +1,8 @@
-import { Box, Grid, Show, GridItem, Flex } from "@chakra-ui/react";
-import GenreList from "../components/GenreList";
-import MovieGrid from "../components/MovieGrid";
-import MovieListSelector from "../components/MovieListSelector";
-import SortSelector from "../components/SortSelector";
+import { Box, Flex, Grid, GridItem, Show } from "@chakra-ui/react";
 import MovieHeading from "../components/MovieHeading";
-import TVGrid from "../components/TVGrid";
+import MovieListSelector from "../components/MovieListSelector";
 import TVGenresList from "../components/TVGenresList";
+import TVGrid from "../components/TVGrid";
 import TVSortSelector from "../components/TVSortSelector";
 
 const TVPage = () => {

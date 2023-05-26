@@ -1,31 +1,10 @@
-// import React from "react";
-// import useMovieQueryStore from "../store";
-// import useGenres from "../hooks/useGenres";
-// import { Heading } from "@chakra-ui/react";
-// import genres from "../Data/genres";
-
-// const MovieHeading = () => {
-//   const genreId = useMovieQueryStore((s) => s.movieQuery.genreId);
-//   const { data: movieGenres } = useGenres("genre/movie/list", genres);
-//   const getGenreId = movieGenres?.results.find((g) => g.id === genreId);
-
-//   const heading = `${getGenreId?.name || ""} Movies`;
-//   return (
-//     <Heading as="h1" marginY={5} fontSize="5xl">
-//       {heading}
-//     </Heading>
-//   );
-// };
-
-// export default MovieHeading;
-
-import useMovieQueryStore from "../store";
-import useGenres from "../hooks/useGenres";
 import { Heading } from "@chakra-ui/react";
-import genres from "../Data/genres";
 import { useLocation } from "react-router-dom";
-import useTVQueryStore from "../tvStore";
+import genres from "../Data/genres";
 import tvGenres from "../Data/tvGenres";
+import useGenres from "../hooks/useGenres";
+import useMovieQueryStore from "../store";
+import useTVQueryStore from "../tvStore";
 
 const MovieHeading = () => {
   const location = useLocation();

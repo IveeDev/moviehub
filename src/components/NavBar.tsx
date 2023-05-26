@@ -1,8 +1,8 @@
-import { Drawer, Flex, HStack, Image } from "@chakra-ui/react";
-import logo from "../assets/logo.webp";
-import SearchInput from "./SearchInput";
-import ColorModeSwitch from "./ColorModeSwitch";
+import { HStack, Image } from "@chakra-ui/react";
 import { Link, useLocation } from "react-router-dom";
+import logo from "../assets/logo.webp";
+import ColorModeSwitch from "./ColorModeSwitch";
+import SearchInput from "./SearchInput";
 
 const NavBar = () => {
   const location = useLocation();

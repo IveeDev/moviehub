@@ -6,8 +6,6 @@ import useMovieQueryStore from "../store";
 
 const apiClient = new APIClient<Movie>("/discover/movie");
 const apiClientSearch = new APIClient<Movie>("/search/movie");
-const apiClientPopular = new APIClient<Movie>("/movie/popular");
-const apiClientUpcoming = new APIClient<Movie>("/movie/upcoming");
 
 const useMovies = () => {
   const movieQuery = useMovieQueryStore((s) => s.movieQuery);
