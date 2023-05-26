@@ -1,4 +1,3 @@
-import React from "react";
 import useGenres from "../hooks/useGenres";
 import {
   Button,
@@ -8,14 +7,13 @@ import {
   ListItem,
   Spinner,
 } from "@chakra-ui/react";
-import useGameQueryStore from "../store";
-import useMovieQueryStore from "../store";
-import genres from "../Data/genres";
+import tvGenres from "../Data/tvGenres";
+import useTVQueryStore from "../tvStore";
 
-const GenreList = () => {
-  const { data, isLoading, error } = useGenres("genre/movie/list", genres);
-  const setSelectedGenreId = useMovieQueryStore((s) => s.setGenreId);
-  const getSelectedGenreId = useMovieQueryStore((s) => s.movieQuery.genreId);
+const TVGenresList = () => {
+  const { data, isLoading, error } = useGenres("genre/tv/list", tvGenres);
+  const setSelectedGenreId = useTVQueryStore((s) => s.setGenreId);
+  const getSelectedGenreId = useTVQueryStore((s) => s.tvQuery.genreId);
 
   if (error) return null;
   if (isLoading) return <Spinner />;
@@ -47,4 +45,4 @@ const GenreList = () => {
   );
 };
 
-export default GenreList;
+export default TVGenresList;

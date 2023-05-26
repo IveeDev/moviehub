@@ -1,4 +1,3 @@
-import useMovies from "../hooks/useMovies";
 import { Box, SimpleGrid, Spinner, Text } from "@chakra-ui/react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import MovieCard from "./MovieCard";
@@ -6,8 +5,10 @@ import MovieCard from "./MovieCard";
 import React, { useState } from "react";
 import MovieCardContainer from "./MovieCardContainer";
 import MovieCardSkeleton from "./MovieCardSkeleton";
+import useTvShows from "../hooks/useTvShows";
+import TVCard from "./TVCard";
 
-const MovieGrid = () => {
+const TVGrid = () => {
   const {
     data,
     isLoading,
@@ -15,7 +16,7 @@ const MovieGrid = () => {
     fetchNextPage,
     isFetchingNextPage,
     hasNextPage,
-  } = useMovies();
+  } = useTvShows();
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8];
   const fetchedMoviesCount =
     data?.pages.reduce((total, page) => total + page.results.length, 0) || 0;
@@ -48,9 +49,9 @@ const MovieGrid = () => {
             ))}
           {data?.pages.map((page, index) => (
             <React.Fragment key={index}>
-              {page.results.map((movie) => (
-                <MovieCardContainer key={movie.id}>
-                  <MovieCard movie={movie} />
+              {page.results.map((tv) => (
+                <MovieCardContainer key={tv.id}>
+                  <TVCard tv={tv} />
                 </MovieCardContainer>
               ))}
             </React.Fragment>
@@ -61,4 +62,4 @@ const MovieGrid = () => {
   );
 };
 
-export default MovieGrid;
+export default TVGrid;

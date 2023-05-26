@@ -2,22 +2,21 @@ import { useInfiniteQuery } from "@tanstack/react-query";
 import { Movie } from "../entity/Movie";
 import APIClient, { FetchResponse } from "../services/api-client";
 import ms from "ms";
-import useMovieQueryStore from "../store";
+import { TV } from "../entity/TvShows";
+import useTVQueryStore from "../tvStore";
 
-const apiClient = new APIClient<Movie>("/discover/movie");
-const apiClientSearch = new APIClient<Movie>("/search/movie");
-const apiClientPopular = new APIClient<Movie>("/movie/popular");
-const apiClientUpcoming = new APIClient<Movie>("/movie/upcoming");
+const apiClient = new APIClient<TV>("/discover/tv");
+const apiClientSearch = new APIClient<TV>("/search/tv");
 
-const useMovies = () => {
-  const movieQuery = useMovieQueryStore((s) => s.movieQuery);
+const useTvShows = () => {
+  const tvQuery = useTVQueryStore((s) => s.tvQuery);
 
   const fetchMovies = async ({ pageParam = 1 }) => {
-    if (movieQuery.searchText) {
+    if (tvQuery.searchText) {
       // Use the search endpoint if a search query is present
       return apiClientSearch.getAll({
         params: {
-          query: movieQuery.searchText,
+          // query: movieQuery.searchText,
           page: pageParam,
         },
       });
@@ -25,16 +24,16 @@ const useMovies = () => {
       // Use the discovery endpoint to fetch all movies
       return apiClient.getAll({
         params: {
-          with_genres: movieQuery.genreId,
+          with_genres: tvQuery.genreId,
           page: pageParam,
-          sort_by: movieQuery.sortOrder,
+          sort_by: tvQuery.sortOrder,
         },
       });
     }
   };
 
-  return useInfiniteQuery<FetchResponse<Movie>, Error>({
-    queryKey: ["movies", movieQuery],
+  return useInfiniteQuery<FetchResponse<TV>, Error>({
+    queryKey: ["tv", tvQuery],
     queryFn: fetchMovies,
     getNextPageParam: (lastPage, allPages) => {
       return lastPage.page ? allPages.length + 1 : undefined;
@@ -45,4 +44,4 @@ const useMovies = () => {
 
 // export default useMovies;
 
-export default useMovies;
+export default useTvShows;

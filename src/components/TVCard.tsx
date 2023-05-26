@@ -5,24 +5,24 @@ import { Link } from "react-router-dom";
 import { TV } from "../entity/TvShows";
 
 interface Props {
-  movie: Movie;
+  tv: TV;
 }
 
-const MovieCard = ({ movie }: Props) => {
+const TVCard = ({ tv }: Props) => {
   const defaultImage = noImage;
-  const posterPath = movie.poster_path
-    ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+  const posterPath = tv.poster_path
+    ? `https://image.tmdb.org/t/p/w500${tv.poster_path}`
     : defaultImage;
   return (
-    <Link to={"/movies/" + movie.id}>
+    <Link to={"/tv/" + tv.id}>
       <Card>
-        <Image src={posterPath} alt={movie.title} fallbackSrc={defaultImage} />
+        <Image src={posterPath} alt={tv.name} fallbackSrc={defaultImage} />
         <CardBody>
-          <Heading fontSize="2xl">{movie.title}</Heading>
+          <Heading fontSize="2xl">{tv.name}</Heading>
         </CardBody>
       </Card>
     </Link>
   );
 };
 
-export default MovieCard;
+export default TVCard;
