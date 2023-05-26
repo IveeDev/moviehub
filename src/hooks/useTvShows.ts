@@ -16,7 +16,7 @@ const useTvShows = () => {
       // Use the search endpoint if a search query is present
       return apiClientSearch.getAll({
         params: {
-          // query: movieQuery.searchText,
+          query: tvQuery.searchText,
           page: pageParam,
         },
       });
