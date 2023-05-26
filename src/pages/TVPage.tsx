@@ -27,7 +27,7 @@ const TVPage = () => {
       </Show>
 
       <GridItem area="main">
-        {/* <MovieHeading /> */}
+        <MovieHeading />
         <Flex marginLeft={2}>
           <MovieListSelector />
           <Box marginLeft={3}>
