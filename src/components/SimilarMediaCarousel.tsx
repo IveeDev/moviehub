@@ -5,7 +5,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 import useSimilarMedia from "../hooks/useSimilarMedia";
-import MovieCard from "./MovieCard";
+import MediaCard from "./MediaCard";
 import MovieCardContainer from "./MovieCardContainer";
 
 interface Props {
@@ -47,14 +47,14 @@ const SimilarMediaCarousel = ({ resourceType }: Props) => {
 
   return (
     <Slider {...sliderSettings}>
-      {data?.results.map((similarMovie) => (
-        <MovieCardContainer key={similarMovie.id}>
+      {data?.results.map((similarMedia) => (
+        <MovieCardContainer key={similarMedia.id}>
           <Box marginX={3} marginTop={5}>
-            <MovieCard movie={similarMovie} />
+            <MediaCard item={similarMedia} />
             <Flex marginY={3}>
-              {isValid(new Date(similarMovie.release_date)) ? (
+              {isValid(new Date(similarMedia.release_date)) ? (
                 <Text>
-                  {format(new Date(similarMovie.release_date), "MMM d, yyyy")}
+                  {format(new Date(similarMedia.release_date), "MMM d, yyyy")}
                 </Text>
               ) : (
                 <Text>Unknown Release Date</Text>

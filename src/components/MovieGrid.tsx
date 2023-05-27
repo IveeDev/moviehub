@@ -1,9 +1,9 @@
-import useMovies from "../hooks/useMovies";
 import { Box, SimpleGrid, Spinner, Text } from "@chakra-ui/react";
 import InfiniteScroll from "react-infinite-scroll-component";
-import MovieCard from "./MovieCard";
+import useMovies from "../hooks/useMovies";
+import MediaCard from "./MediaCard";
 
-import React, { useState } from "react";
+import React from "react";
 import MovieCardContainer from "./MovieCardContainer";
 import MovieCardSkeleton from "./MovieCardSkeleton";
 
@@ -50,7 +50,7 @@ const MovieGrid = () => {
             <React.Fragment key={index}>
               {page.results.map((movie) => (
                 <MovieCardContainer key={movie.id}>
-                  <MovieCard movie={movie} />
+                  <MediaCard item={movie} />
                 </MovieCardContainer>
               ))}
             </React.Fragment>

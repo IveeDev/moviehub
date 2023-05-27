@@ -1,6 +1,6 @@
 import { Box, SimpleGrid, Spinner, Text } from "@chakra-ui/react";
 import InfiniteScroll from "react-infinite-scroll-component";
-import MovieCard from "./MovieCard";
+import MediaCard from "./MediaCard";
 
 import React, { useState } from "react";
 import MovieCardContainer from "./MovieCardContainer";
