@@ -14,7 +14,7 @@ const TVCard = ({ tv }: Props) => {
     ? `https://image.tmdb.org/t/p/w500${tv.poster_path}`
     : defaultImage;
   return (
-    <Link to={"/tv/" + tv.id}>
+    <Link to={"/explore/tv/" + tv.id}>
       <Card>
         <Image src={posterPath} alt={tv.name} fallbackSrc={defaultImage} />
         <CardBody>

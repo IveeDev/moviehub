@@ -13,13 +13,17 @@ import {
   useMediaQuery,
 } from "@chakra-ui/react";
 import noImage from "../assets/ImagePlaceholder/no-image-placeholder.webp";
-import MovieStatus from "../components/MovieStatus";
+import MovieStatus from "../components/MediaStatus";
 import CastCarousel from "../components/CastCarousel";
 import SimilarMovieCarousel from "../components/SimilarMovieCarousel";
+import useResource from "../hooks/useResource";
+import { Movie } from "../entity/Movie";
+import CircleRating from "../components/circleRating/CircleRating";
+import MediaStatus from "../components/MediaStatus";
 
 const MovieDetail = () => {
   const { id } = useParams();
-  const { data: movie, isLoading, error } = useMovie(id!);
+  const { data: movie, isLoading, error } = useResource<Movie>(id!, "movie");
   const defaultImage = noImage;
   const posterPath = movie?.poster_path
     ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
@@ -68,10 +72,18 @@ const MovieDetail = () => {
               </Flex>
             ))}
           </HStack>
-          <Text fontSize="4xl">Overview</Text>
-          <Text fontSize="md">{movie.overview}</Text>
+          <Flex marginY={8}>
+            <CircleRating rating={movie.vote_average} />
+          </Flex>
+          <Box>
+            <Heading as={"h2"} fontSize={"4xl"} marginY={2}>
+              Overview
+            </Heading>
+            <Text fontSize="md">{movie.overview}</Text>
+          </Box>
 
-          <MovieStatus movie={movie} />
+          {/* <MovieStatus movie={movie} /> */}
+          <MediaStatus data={movie} />
         </Box>
       </SimpleGrid>
 

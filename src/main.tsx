@@ -5,6 +5,7 @@ import { ChakraProvider, ColorModeScript } from "@chakra-ui/react";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import theme from "./theme";
 import "./index.css";
+import "./index.scss";
 import { RouterProvider } from "react-router-dom";
 import router from "./routes";
 

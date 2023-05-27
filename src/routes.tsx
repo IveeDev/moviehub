@@ -3,8 +3,8 @@ import HomePage from "./pages/HomePage";
 import Layout from "./pages/Layout";
 import ErrorPage from "./pages/ErrorPage";
 import MovieDetail from "./pages/MovieDetail";
-import TvShows from "./pages/TVPage";
 import TVPage from "./pages/TVPage";
+import TVDetail from "./pages/TVDetail";
 
 const router = createBrowserRouter([
   {
@@ -15,6 +15,7 @@ const router = createBrowserRouter([
       { index: true, element: <HomePage /> },
       { path: "movies/:id", element: <MovieDetail /> },
       { path: "explore/tv", element: <TVPage /> },
+      { path: "explore/tv/:id", element: <TVDetail /> },
     ],
   },
 ]);
