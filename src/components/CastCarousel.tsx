@@ -1,4 +1,3 @@
-import avatar from "../assets/avatar.png";
 import {
   Box,
   Flex,
@@ -6,17 +5,21 @@ import {
   Spinner,
   Text,
   useMediaQuery,
-  //   useBreakpointValue,
 } from "@chakra-ui/react";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import useCast from "../hooks/useCast";
 import { useParams } from "react-router-dom";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick.css";
+import avatar from "../assets/avatar.png";
+import useCast from "../hooks/useCast";
 
-const CastCarousel = () => {
+interface Props {
+  resourceType: "movie" | "tv";
+}
+
+const CastCarousel = ({ resourceType }: Props) => {
   const { id } = useParams();
-  const { data: castData, isLoading, error } = useCast(id!);
+  const { data: castData, isLoading, error } = useCast(id!, resourceType);
   const [isSmScreen] = useMediaQuery("(max-width: 480px)");
   const [isMdScreen] = useMediaQuery("(max-width: 768px)");
   const [isLgScreen] = useMediaQuery("(max-width: 1024px)");

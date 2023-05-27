@@ -20,6 +20,7 @@ import useResource from "../hooks/useResource";
 import { Movie } from "../entity/Movie";
 import CircleRating from "../components/circleRating/CircleRating";
 import MediaStatus from "../components/MediaStatus";
+import TopCastContainer from "../components/TopCastContainer";
 
 const MovieDetail = () => {
   const { id } = useParams();
@@ -86,14 +87,17 @@ const MovieDetail = () => {
           <MediaStatus data={movie} />
         </Box>
       </SimpleGrid>
+      {/* <Box marginTop={10} paddingX={5}>
+        <Text fontSize="2xl" marginX={3}>
+          TOP CAST
+        </Text>
+        <CastCarousel resourceType="movie" />
+      </Box> */}
 
-      <Box marginY={4} paddingX={5}>
-        <Text fontSize="2xl">TOP CASTS:</Text>
-        <CastCarousel />
-      </Box>
+      <TopCastContainer resourceType="movie" />
       <Box marginY={4} paddingX={5}>
         <Text>SIMILAR MOVIES:</Text>
-        <SimilarMovieCarousel />
+        <SimilarMovieCarousel resourceType="movie" />
       </Box>
     </>
   );

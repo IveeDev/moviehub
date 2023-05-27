@@ -6,7 +6,7 @@ export interface FetchResponse<T> {
   results: T[];
 }
 
-export interface MovieCastCrewResponse {
+export interface CastCrewResponse {
   cast: CastMember[];
   // Other properties if available
 }

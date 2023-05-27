@@ -19,9 +19,13 @@ import useSimilarMovie from "../hooks/useSimilarMovie";
 import MovieCardContainer from "./MovieCardContainer";
 import MovieCard from "./MovieCard";
 
-const SimilarMovieCarousel = () => {
+interface Props {
+  resourceType: "movie" | "tv";
+}
+
+const SimilarMovieCarousel = ({ resourceType }: Props) => {
   const { id } = useParams();
-  const { data, isLoading, error } = useSimilarMovie(id!);
+  const { data, isLoading, error } = useSimilarMovie(id!, resourceType);
 
   const [isSmScreen] = useMediaQuery("(max-width: 480px)");
   const [isMdScreen] = useMediaQuery("(max-width: 768px)");

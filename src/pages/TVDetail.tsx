@@ -15,6 +15,9 @@ import MediaStatus from "../components/MediaStatus";
 import CircleRating from "../components/circleRating/CircleRating";
 import { TV } from "../entity/TvShows";
 import useResource from "../hooks/useResource";
+import CastCarousel from "../components/CastCarousel";
+import TopCastContainer from "../components/TopCastContainer";
+import SimilarMovieCarousel from "../components/SimilarMovieCarousel";
 
 const TVDetail = () => {
   const { id } = useParams();
@@ -27,6 +30,10 @@ const TVDetail = () => {
   const [isSmScreen] = useMediaQuery("(max-width: 480px)");
   const [isMdScreen] = useMediaQuery("(max-width: 768px)");
   let gridColumns = { base: 1, md: 2 };
+
+  if (isSmScreen) {
+    gridColumns = { base: 1, md: 2 };
+  }
 
   if (isLoading) return <Spinner />;
   if (error || !tv) throw error;
@@ -71,10 +78,20 @@ const TVDetail = () => {
             </Heading>
             <Text>{tv.overview}</Text>
           </Box>
-          {/* <MovieStatus tv={tv} /> */}
           <MediaStatus data={tv} />
         </Box>
       </SimpleGrid>
+      {/* <Box marginTop={10} paddingX={5}>
+        <Text fontSize="2xl" marginX={3}>
+          TOP CAST
+        </Text>
+        <CastCarousel resourceType="tv" />
+      </Box> */}
+      <TopCastContainer resourceType="tv" />
+      <Box marginY={4} paddingX={5}>
+        <Text>SIMILAR MOVIES:</Text>
+        <SimilarMovieCarousel resourceType="tv" />
+      </Box>
     </>
   );
 };

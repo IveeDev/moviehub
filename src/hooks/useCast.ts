@@ -1,12 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
-import APIClient, { MovieCastCrewResponse } from "../services/api-client";
+import APIClient, { CastCrewResponse } from "../services/api-client";
 
-const apiClient = new APIClient<MovieCastCrewResponse>("/movie");
+type ResourceType = "movie" | "tv";
 
-const useCast = (id: string) =>
-  useQuery({
-    queryKey: ["movie", id, "casts"],
+const useCast = (id: string, resourceType: ResourceType) => {
+  const apiClient = new APIClient<CastCrewResponse>(`/${resourceType}`);
+  return useQuery({
+    queryKey: [resourceType, id, "casts"],
     queryFn: () => apiClient.get(id, "/credits"),
   });
+};
 
 export default useCast;

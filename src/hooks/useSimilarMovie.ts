@@ -2,12 +2,14 @@ import { useQuery } from "@tanstack/react-query";
 import { Movie } from "../entity/Movie";
 import APIClient from "../services/api-client";
 
-const apiClient = new APIClient<Movie>("/movie");
+type ResourceType = "movie" | "tv";
 
-const useSimilarMovie = (id: string) =>
-  useQuery({
-    queryKey: ["movies", id, "similar"],
+const useSimilarMovie = (id: string, resourceType: ResourceType) => {
+  const apiClient = new APIClient<Movie>(`/${resourceType}`);
+  return useQuery({
+    queryKey: [resourceType, id, "similar"],
     queryFn: () => apiClient.getSimilarMovies(id, "/similar"),
   });
+};
 
 export default useSimilarMovie;
