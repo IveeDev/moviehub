@@ -15,9 +15,8 @@ import MediaStatus from "../components/MediaStatus";
 import CircleRating from "../components/circleRating/CircleRating";
 import { TV } from "../entity/TvShows";
 import useResource from "../hooks/useResource";
-import CastCarousel from "../components/CastCarousel";
 import TopCastContainer from "../components/TopCastContainer";
-import SimilarMovieCarousel from "../components/SimilarMovieCarousel";
+import SimilarMediaCarousel from "../components/SimilarMediaCarousel";
 
 const TVDetail = () => {
   const { id } = useParams();
@@ -81,16 +80,12 @@ const TVDetail = () => {
           <MediaStatus data={tv} />
         </Box>
       </SimpleGrid>
-      {/* <Box marginTop={10} paddingX={5}>
-        <Text fontSize="2xl" marginX={3}>
-          TOP CAST
-        </Text>
-        <CastCarousel resourceType="tv" />
-      </Box> */}
       <TopCastContainer resourceType="tv" />
       <Box marginY={4} paddingX={5}>
-        <Text>SIMILAR MOVIES:</Text>
-        <SimilarMovieCarousel resourceType="tv" />
+        <Text fontSize="2xl" marginLeft={3}>
+          SIMILAR TV SHOWS
+        </Text>
+        <SimilarMediaCarousel resourceType="tv" />
       </Box>
     </>
   );

@@ -1,15 +1,26 @@
 import { HStack, Image } from "@chakra-ui/react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import logo from "../assets/logo.webp";
 import ColorModeSwitch from "./ColorModeSwitch";
-import SearchInput from "./SearchInput";
+import SearchInput, { Endpoint } from "./SearchInput";
 
 const NavBar = () => {
   const location = useLocation();
   const currentPathname = location.pathname;
+  console.log(currentPathname);
 
   // Determine the endpoint based on the current route
-  const endpoint = currentPathname === "/explore/tv" ? "tvShows" : "movies";
+
+  let endpoint: Endpoint = "movies"; // Default endpoint value is "movies"
+
+  if (currentPathname === "/" || currentPathname.startsWith("/movies/"))
+    endpoint = "movies";
+
+  if (
+    currentPathname === "/explore/tv" ||
+    currentPathname.startsWith("/explore/tv/")
+  )
+    endpoint = "tvShows";
 
   return (
     <>

@@ -1,8 +1,5 @@
-import { useParams } from "react-router-dom";
-import useMovie from "../hooks/useMovie";
 import {
   Box,
-  Divider,
   Flex,
   HStack,
   Heading,
@@ -12,15 +9,14 @@ import {
   Text,
   useMediaQuery,
 } from "@chakra-ui/react";
+import { useParams } from "react-router-dom";
 import noImage from "../assets/ImagePlaceholder/no-image-placeholder.webp";
-import MovieStatus from "../components/MediaStatus";
-import CastCarousel from "../components/CastCarousel";
-import SimilarMovieCarousel from "../components/SimilarMovieCarousel";
-import useResource from "../hooks/useResource";
-import { Movie } from "../entity/Movie";
-import CircleRating from "../components/circleRating/CircleRating";
 import MediaStatus from "../components/MediaStatus";
+import SimilarMediaCarousel from "../components/SimilarMediaCarousel";
 import TopCastContainer from "../components/TopCastContainer";
+import CircleRating from "../components/circleRating/CircleRating";
+import { Movie } from "../entity/Movie";
+import useResource from "../hooks/useResource";
 
 const MovieDetail = () => {
   const { id } = useParams();
@@ -83,21 +79,15 @@ const MovieDetail = () => {
             <Text fontSize="md">{movie.overview}</Text>
           </Box>
 
-          {/* <MovieStatus movie={movie} /> */}
           <MediaStatus data={movie} />
         </Box>
       </SimpleGrid>
-      {/* <Box marginTop={10} paddingX={5}>
-        <Text fontSize="2xl" marginX={3}>
-          TOP CAST
-        </Text>
-        <CastCarousel resourceType="movie" />
-      </Box> */}
-
       <TopCastContainer resourceType="movie" />
       <Box marginY={4} paddingX={5}>
-        <Text>SIMILAR MOVIES:</Text>
-        <SimilarMovieCarousel resourceType="movie" />
+        <Text fontSize="2xl" marginLeft={3}>
+          SIMILAR MOVIES:
+        </Text>
+        <SimilarMediaCarousel resourceType="movie" />
       </Box>
     </>
   );

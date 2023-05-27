@@ -6,10 +6,9 @@ import useGenres from "../hooks/useGenres";
 import useMovieQueryStore from "../store";
 import useTVQueryStore from "../tvStore";
 
-const MovieHeading = () => {
+const MediaHeading = () => {
   const location = useLocation();
   const currentPathname = location.pathname;
-  console.log(location);
   const isMovieRoute = currentPathname === "/";
   const isTVRoute = currentPathname === "/explore/tv";
 
@@ -40,4 +39,4 @@ const MovieHeading = () => {
   );
 };
 
-export default MovieHeading;
+export default MediaHeading;

@@ -4,12 +4,12 @@ import APIClient from "../services/api-client";
 
 type ResourceType = "movie" | "tv";
 
-const useSimilarMovie = (id: string, resourceType: ResourceType) => {
+const useSimilarMedia = (id: string, resourceType: ResourceType) => {
   const apiClient = new APIClient<Movie>(`/${resourceType}`);
   return useQuery({
-    queryKey: [resourceType, id, "similar"],
-    queryFn: () => apiClient.getSimilarMovies(id, "/similar"),
+    queryKey: [resourceType, id, `similar${resourceType}`],
+    queryFn: () => apiClient.getSimilarResource(id, "/similar"),
   });
 };
 
-export default useSimilarMovie;
+export default useSimilarMedia;

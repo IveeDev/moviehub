@@ -52,8 +52,8 @@ class APIClient<T> {
       .then((res) => res.data);
   };
 
-  // Get a single movie with cast and crew etc
-  getSimilarMovies = (id: string | number, extension: string = "") => {
+  // Get a single movie or tvShows with cast and crew etc
+  getSimilarResource = (id: string | number, extension: string = "") => {
     return axiosInstance
       .get<FetchResponse<T>>(this.endPoint + "/" + id + extension)
       .then((res) => res.data);

@@ -3,7 +3,7 @@ import GenreList from "../components/GenreList";
 import MovieGrid from "../components/MovieGrid";
 import MovieListSelector from "../components/MovieListSelector";
 import SortSelector from "../components/SortSelector";
-import MovieHeading from "../components/MovieHeading";
+import MediaHeading from "../components/MediaHeading";
 
 const HomePage = () => {
   return (
@@ -24,7 +24,7 @@ const HomePage = () => {
       {/* </Show> */}
 
       <GridItem area="main">
-        <MovieHeading />
+        <MediaHeading />
         <Flex marginLeft={2}>
           <MovieListSelector />
           <Box marginLeft={3}>

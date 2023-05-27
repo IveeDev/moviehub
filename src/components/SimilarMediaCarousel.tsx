@@ -1,31 +1,20 @@
-import {
-  Box,
-  Flex,
-  Image,
-  Spinner,
-  Text,
-  useMediaQuery,
-  SimpleGrid,
-  Card,
-  CardBody,
-} from "@chakra-ui/react";
+import { Box, Flex, Spinner, Text, useMediaQuery } from "@chakra-ui/react";
 import { format, isValid } from "date-fns";
+import { useParams } from "react-router-dom";
 import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import noImage from "../assets/ImagePlaceholder/no-image-placeholder.webp";
-import { Link, useParams } from "react-router-dom";
-import useSimilarMovie from "../hooks/useSimilarMovie";
-import MovieCardContainer from "./MovieCardContainer";
+import "slick-carousel/slick/slick.css";
+import useSimilarMedia from "../hooks/useSimilarMedia";
 import MovieCard from "./MovieCard";
+import MovieCardContainer from "./MovieCardContainer";
 
 interface Props {
   resourceType: "movie" | "tv";
 }
 
-const SimilarMovieCarousel = ({ resourceType }: Props) => {
+const SimilarMediaCarousel = ({ resourceType }: Props) => {
   const { id } = useParams();
-  const { data, isLoading, error } = useSimilarMovie(id!, resourceType);
+  const { data, isLoading, error } = useSimilarMedia(id!, resourceType);
 
   const [isSmScreen] = useMediaQuery("(max-width: 480px)");
   const [isMdScreen] = useMediaQuery("(max-width: 768px)");
@@ -60,7 +49,7 @@ const SimilarMovieCarousel = ({ resourceType }: Props) => {
     <Slider {...sliderSettings}>
       {data?.results.map((similarMovie) => (
         <MovieCardContainer key={similarMovie.id}>
-          <Box marginX={3}>
+          <Box marginX={3} marginTop={5}>
             <MovieCard movie={similarMovie} />
             <Flex marginY={3}>
               {isValid(new Date(similarMovie.release_date)) ? (
@@ -78,4 +67,4 @@ const SimilarMovieCarousel = ({ resourceType }: Props) => {
   );
 };
 
-export default SimilarMovieCarousel;
+export default SimilarMediaCarousel;

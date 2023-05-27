@@ -1,5 +1,5 @@
 import { Box, Flex, Grid, GridItem, Show } from "@chakra-ui/react";
-import MovieHeading from "../components/MovieHeading";
+import MediaHeading from "../components/MediaHeading";
 import MovieListSelector from "../components/MovieListSelector";
 import TVGenresList from "../components/TVGenresList";
 import TVGrid from "../components/TVGrid";
@@ -24,7 +24,7 @@ const TVPage = () => {
       </Show>
 
       <GridItem area="main">
-        <MovieHeading />
+        <MediaHeading />
         <Flex marginLeft={2}>
           <MovieListSelector />
           <Box marginLeft={3}>
