@@ -7,6 +7,7 @@ import "slick-carousel/slick/slick.css";
 import useSimilarMedia from "../hooks/useSimilarMedia";
 import MediaCard from "./MediaCard";
 import MovieCardContainer from "./MovieCardContainer";
+import { Movie } from "../entity/Movie";
 
 interface Props {
   resourceType: "movie" | "tv";
@@ -14,7 +15,11 @@ interface Props {
 
 const SimilarMediaCarousel = ({ resourceType }: Props) => {
   const { id } = useParams();
-  const { data, isLoading, error } = useSimilarMedia(id!, resourceType);
+  const { data, isLoading, error } = useSimilarMedia<Movie>(
+    id!,
+    resourceType,
+    "similar"
+  );
 
   const [isSmScreen] = useMediaQuery("(max-width: 480px)");
   const [isMdScreen] = useMediaQuery("(max-width: 768px)");
