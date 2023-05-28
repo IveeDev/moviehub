@@ -51,7 +51,8 @@ const TVGrid = () => {
             <React.Fragment key={index}>
               {page.results.map((tv) => (
                 <MovieCardContainer key={tv.id}>
-                  <TVCard tv={tv} />
+                  {/* <TVCard tv={tv} /> */}
+                  <MediaCard item={tv} />
                 </MovieCardContainer>
               ))}
             </React.Fragment>

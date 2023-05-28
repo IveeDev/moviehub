@@ -14,7 +14,7 @@ const MediaCard = ({ item }: Props) => {
     ? `https://image.tmdb.org/t/p/w500${item.poster_path}`
     : defaultImage;
 
-  let linkTo = "explore/tv/" + item.id;
+  let linkTo = "/explore/tv/" + item.id;
 
   if (item.hasOwnProperty("title")) {
     // Assuming "title" is present only in the Movie interface
@@ -26,7 +26,7 @@ const MediaCard = ({ item }: Props) => {
   return (
     <Link to={linkTo}>
       <Card>
-        <Image src={posterPath} alt={title} fallbackSrc={defaultImage} />
+        <Image src={posterPath} alt={title} />
         <CardBody>
           <Heading fontSize="2xl">{title}</Heading>
         </CardBody>

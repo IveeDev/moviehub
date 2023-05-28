@@ -9,8 +9,6 @@ const NavBar = () => {
   const currentPathname = location.pathname;
   console.log(currentPathname);
 
-  // Determine the endpoint based on the current route
-
   let endpoint: Endpoint = "movies"; // Default endpoint value is "movies"
 
   if (currentPathname === "/" || currentPathname.startsWith("/movies/"))
