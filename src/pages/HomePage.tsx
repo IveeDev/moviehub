@@ -9,12 +9,12 @@ const HomePage = () => {
   return (
     <Grid
       templateAreas={{
-        base: `"aside main"`, // Smaller screen
+        base: `"main"`, // Smaller screen
         lg: `"aside main"`, // Larger Screen
       }}
       templateColumns={{
-        base: "150px 1fr",
-        lg: "150px 1fr", //aside takes 200px width while the other(Where we have our grid) expands
+        base: "1fr",
+        lg: "200px 1fr", //aside takes 200px width while the other(Where we have our grid) expands
       }}
     >
       <Show above="lg">
