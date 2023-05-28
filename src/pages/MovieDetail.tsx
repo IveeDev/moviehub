@@ -17,7 +17,6 @@ import TopCastContainer from "../components/TopCastContainer";
 import CircleRating from "../components/circleRating/CircleRating";
 import { Movie } from "../entity/Movie";
 import useResource from "../hooks/useResource";
-import Trailer from "../components/Trailer";
 
 const MovieDetail = () => {
   const { id } = useParams();
@@ -90,7 +89,6 @@ const MovieDetail = () => {
         </Text>
         <SimilarMediaCarousel resourceType="movie" />
       </Box>
-      <Trailer resourceType="movie" />
     </>
   );
 };
